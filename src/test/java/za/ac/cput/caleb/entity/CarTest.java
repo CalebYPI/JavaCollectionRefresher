@@ -2,9 +2,7 @@ package za.ac.cput.caleb.entity;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
 import java.util.*;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 class CarTest {
@@ -25,10 +23,10 @@ class CarTest {
     void addToCollection() {
         Car exoticCar1 = new Car.CarBuilder().setId("1").setDesc("McLaren P1").build();
         Car exoticCar2 = new Car.CarBuilder().setId("2").setDesc("Lamborghini Sesto Elemento").build();
-        //Adding cars to list
         exoticCars.add(exoticCar1);
         exoticCars.add(exoticCar2);
         assertNotNull(exoticCars);
+        assertEquals(2, exoticCars.size());
         System.out.println("Exotic cars that were added: \n" + exoticCars);
     }
     @Test
@@ -42,6 +40,7 @@ class CarTest {
         addToCollection();
         Car exoticCar1 = new Car.CarBuilder().setId("1").setDesc("McLaren P1").build();
         assertTrue(exoticCars.remove(exoticCar1));
+        assertEquals(1, exoticCars.size());
         System.out.println(exoticCars);
     }
 
@@ -49,10 +48,10 @@ class CarTest {
     void addToList() {
         Car economyCar1 = new Car.CarBuilder().setId("3").setDesc("Mini Cooper Countryman").build();
         Car economyCar2 = new Car.CarBuilder().setId("4").setDesc("Volkswagen Polo").build();
-        //Adding cars to list
         economyCars.add(0, economyCar1);
         economyCars.add(1, economyCar2);
         assertNotNull(economyCars);
+        assertEquals(2, economyCars.size());
         System.out.println("Economy cars that were added: \n" + economyCars);
     }
     @Test
@@ -66,6 +65,7 @@ class CarTest {
         addToList();
         Car economyCar2 = new Car.CarBuilder().setId("4").setDesc("Volkswagen Polo").build();
         assertTrue(economyCars.remove(economyCar2));
+        assertEquals(1, economyCars.size());
         System.out.println(economyCars);
     }
 
@@ -73,10 +73,10 @@ class CarTest {
     void addToSet() {
         Car sportsCar1 = new Car.CarBuilder().setId("5").setDesc("BMW M4").build();
         Car sportsCar2 = new Car.CarBuilder().setId("6").setDesc("Mercedes Benz C63 AMG").build();
-        //Adding cars to set
         sportsCars.add(sportsCar1);
         sportsCars.add(sportsCar2);
         assertNotNull(sportsCars);
+        assertEquals(2, sportsCars.size());
         System.out.println("Sports cars that were added: \n" + sportsCars);
     }
     @Test
@@ -90,6 +90,7 @@ class CarTest {
         addToSet();
         Car sportsCar1 = new Car.CarBuilder().setId("5").setDesc("BMW M4").build();
         assertTrue(sportsCars.remove(sportsCar1));
+        assertEquals(1, sportsCars.size());
         System.out.println(sportsCars);
     }
 
@@ -97,10 +98,10 @@ class CarTest {
     void addToMap() {
         Car luxuryCar1 = new Car.CarBuilder().setId("7").setDesc("Rolls Royce Phantom").build();
         Car luxuryCar2 = new Car.CarBuilder().setId("8").setDesc("Bentley Continental GT").build();
-        //Adding cars to map
         luxuryCars.put(luxuryCar1.getId(), luxuryCar1);
         luxuryCars.put(luxuryCar2.getId(), luxuryCar2);
         assertNotNull(luxuryCars);
+        assertEquals(2, luxuryCars.size());
         System.out.println("Luxury cars that were added: \n" + luxuryCars);
     }
     @Test
