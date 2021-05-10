@@ -5,7 +5,7 @@ import java.util.Objects;
 public class Car {
     private String id, desc;
 
-    protected Car(CarBuilder builder){
+    private Car(CarBuilder builder){
         this.id = builder.id;
         this.desc = builder.desc;
     }
