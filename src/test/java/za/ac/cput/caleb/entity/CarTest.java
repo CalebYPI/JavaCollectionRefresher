@@ -33,7 +33,10 @@ class CarTest {
     void findInCollection() {
         addToCollection();
         Car exoticCar1 = new Car.CarBuilder().setId("1").setDesc("McLaren P1").build();
-        assertTrue(exoticCars.contains(exoticCar1));
+        for(Car car: exoticCars) {
+            if (car.equals(exoticCar1))
+                assertEquals(car, exoticCar1);
+        }
     }
     @Test
     void removeFromCollection() {
@@ -58,7 +61,10 @@ class CarTest {
     void findInList() {
         addToList();
         Car economyCar2 = new Car.CarBuilder().setId("4").setDesc("Volkswagen Polo").build();
-        assertTrue(economyCars.contains(economyCar2));
+        for (Car car: economyCars) {
+            if (car.equals(economyCars))
+                assertEquals(car, economyCars);
+        }
     }
     @Test
     void removeFromList() {
@@ -83,7 +89,10 @@ class CarTest {
     void findInSet() {
         addToSet();
         Car sportsCar1 = new Car.CarBuilder().setId("5").setDesc("BMW M4").build();
-        assertTrue(sportsCars.contains(sportsCar1));
+        for (Car car: sportsCars) {
+            if (car.equals(sportsCar1))
+                assertEquals(car, sportsCar1);
+        }
     }
     @Test
     void removeFromSet() {
@@ -108,7 +117,10 @@ class CarTest {
     void findInMap() {
         addToMap();
         Car luxuryCar1 = new Car.CarBuilder().setId("7").setDesc("Rolls Royce Phantom").build();
-        assertTrue(luxuryCars.containsValue(luxuryCar1));
+        for (Car car: luxuryCars.values()) {
+            if (car.equals(luxuryCar1))
+                assertEquals(car, luxuryCar1);
+        }
     }
     @Test
     void removeFromMap() {
