@@ -1,28 +1,33 @@
 package za.ac.cput.caleb.entity;
 
-import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.MethodOrderer;
+import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestMethodOrder;
+
 import java.util.*;
 import static org.junit.jupiter.api.Assertions.*;
 
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 class CarTest {
 
-    Collection<Car> exoticCars;
-    List<Car> economyCars;
-    Set<Car> sportsCars;
-    Map<String, Car> luxuryCars;
-    @BeforeEach
-    void setUp(){
-        exoticCars = new HashSet<>();
-        economyCars = new ArrayList<>();
-        sportsCars = new HashSet<>();
-        luxuryCars = new HashMap<>();
-    }
+    private static Collection<Car> exoticCars = new HashSet<>();
+    private static List<Car> economyCars = new ArrayList<>();
+    private static Set<Car> sportsCars = new HashSet<>();
+    private static Map<String, Car> luxuryCars = new HashMap<>();
+
+    private static Car exoticCar1 = new Car.CarBuilder().setId(UUID.randomUUID().toString()).setDesc("McLaren P1").build();
+    private static Car exoticCar2 = new Car.CarBuilder().setId(UUID.randomUUID().toString()).setDesc("Lamborghini Sesto Elemento").build();
+    private static Car economyCar1 = new Car.CarBuilder().setId(UUID.randomUUID().toString()).setDesc("Mini Cooper Countryman").build();
+    private static Car economyCar2 = new Car.CarBuilder().setId(UUID.randomUUID().toString()).setDesc("Volkswagen Polo").build();
+    private static Car sportsCar1 = new Car.CarBuilder().setId(UUID.randomUUID().toString()).setDesc("BMW M4").build();
+    private static Car sportsCar2 = new Car.CarBuilder().setId(UUID.randomUUID().toString()).setDesc("Mercedes Benz C63 AMG").build();
+    private static Car luxuryCar1 = new Car.CarBuilder().setId(UUID.randomUUID().toString()).setDesc("Rolls Royce Phantom").build();
+    private static Car luxuryCar2 = new Car.CarBuilder().setId(UUID.randomUUID().toString()).setDesc("Bentley Continental GT").build();
 
     @Test
+    @Order(1)
     void addToCollection() {
-        Car exoticCar1 = new Car.CarBuilder().setId("1").setDesc("McLaren P1").build();
-        Car exoticCar2 = new Car.CarBuilder().setId("2").setDesc("Lamborghini Sesto Elemento").build();
         exoticCars.add(exoticCar1);
         exoticCars.add(exoticCar2);
         assertNotNull(exoticCars);
@@ -30,55 +35,51 @@ class CarTest {
         System.out.println("Exotic cars that were added: \n" + exoticCars);
     }
     @Test
+    @Order(2)
     void findInCollection() {
-        addToCollection();
-        Car exoticCar1 = new Car.CarBuilder().setId("1").setDesc("McLaren P1").build();
         for(Car car: exoticCars) {
-            if (car.equals(exoticCar1))
-                assertEquals(car, exoticCar1);
+            if (car.equals(exoticCar2)) {
+                assertEquals(car, exoticCar2);
+            }
         }
     }
     @Test
+    @Order(3)
     void removeFromCollection() {
-        addToCollection();
-        Car exoticCar1 = new Car.CarBuilder().setId("1").setDesc("McLaren P1").build();
         assertTrue(exoticCars.remove(exoticCar1));
         assertEquals(1, exoticCars.size());
         System.out.println(exoticCars);
     }
 
     @Test
+    @Order(4)
     void addToList() {
-        Car economyCar1 = new Car.CarBuilder().setId("3").setDesc("Mini Cooper Countryman").build();
-        Car economyCar2 = new Car.CarBuilder().setId("4").setDesc("Volkswagen Polo").build();
-        economyCars.add(0, economyCar1);
-        economyCars.add(1, economyCar2);
+        economyCars.add(economyCar1);
+        economyCars.add(economyCar2);
         assertNotNull(economyCars);
         assertEquals(2, economyCars.size());
         System.out.println("Economy cars that were added: \n" + economyCars);
     }
     @Test
+    @Order(5)
     void findInList() {
-        addToList();
-        Car economyCar2 = new Car.CarBuilder().setId("4").setDesc("Volkswagen Polo").build();
         for (Car car: economyCars) {
-            if (car.equals(economyCars))
-                assertEquals(car, economyCars);
+            if (car.equals(economyCar2)){
+                assertEquals(car, economyCar2);
+            }
         }
     }
     @Test
+    @Order(6)
     void removeFromList() {
-        addToList();
-        Car economyCar2 = new Car.CarBuilder().setId("4").setDesc("Volkswagen Polo").build();
         assertTrue(economyCars.remove(economyCar2));
         assertEquals(1, economyCars.size());
         System.out.println(economyCars);
     }
 
     @Test
+    @Order(7)
     void addToSet() {
-        Car sportsCar1 = new Car.CarBuilder().setId("5").setDesc("BMW M4").build();
-        Car sportsCar2 = new Car.CarBuilder().setId("6").setDesc("Mercedes Benz C63 AMG").build();
         sportsCars.add(sportsCar1);
         sportsCars.add(sportsCar2);
         assertNotNull(sportsCars);
@@ -86,27 +87,25 @@ class CarTest {
         System.out.println("Sports cars that were added: \n" + sportsCars);
     }
     @Test
+    @Order(8)
     void findInSet() {
-        addToSet();
-        Car sportsCar1 = new Car.CarBuilder().setId("5").setDesc("BMW M4").build();
         for (Car car: sportsCars) {
             if (car.equals(sportsCar1))
                 assertEquals(car, sportsCar1);
+            System.out.println(car.getDesc());
         }
     }
     @Test
+    @Order(9)
     void removeFromSet() {
-        addToSet();
-        Car sportsCar1 = new Car.CarBuilder().setId("5").setDesc("BMW M4").build();
         assertTrue(sportsCars.remove(sportsCar1));
         assertEquals(1, sportsCars.size());
         System.out.println(sportsCars);
     }
 
     @Test
+    @Order(10)
     void addToMap() {
-        Car luxuryCar1 = new Car.CarBuilder().setId("7").setDesc("Rolls Royce Phantom").build();
-        Car luxuryCar2 = new Car.CarBuilder().setId("8").setDesc("Bentley Continental GT").build();
         luxuryCars.put(luxuryCar1.getId(), luxuryCar1);
         luxuryCars.put(luxuryCar2.getId(), luxuryCar2);
         assertNotNull(luxuryCars);
@@ -114,18 +113,17 @@ class CarTest {
         System.out.println("Luxury cars that were added: \n" + luxuryCars);
     }
     @Test
+    @Order(11)
     void findInMap() {
-        addToMap();
-        Car luxuryCar1 = new Car.CarBuilder().setId("7").setDesc("Rolls Royce Phantom").build();
         for (Car car: luxuryCars.values()) {
             if (car.equals(luxuryCar1))
                 assertEquals(car, luxuryCar1);
+            System.out.println(car.getDesc());
         }
     }
     @Test
+    @Order(12)
     void removeFromMap() {
-        addToMap();
-        Car luxuryCar1 = new Car.CarBuilder().setId("7").setDesc("Rolls Royce Phantom").build();
         luxuryCars.remove(luxuryCar1.getId());
         assertEquals(1, luxuryCars.size());
         System.out.println(luxuryCars);
