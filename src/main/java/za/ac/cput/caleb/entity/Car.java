@@ -1,5 +1,10 @@
 package za.ac.cput.caleb.entity;
-
+/*
+ * @Name: Caleb Ruiters
+ * @Student Number: 215169751
+ * @Date: 04/05/2021
+ * @Description: The purpose of this class is to create a unique instance of a Car using the Builder pattern
+ */
 import java.util.Objects;
 
 public class Car {

@@ -1,5 +1,10 @@
 package za.ac.cput.caleb.entity;
-
+/*
+ * @Name: Caleb Ruiters
+ * @Student Number: 215169751
+ * @Date: 04/05/2021
+ * @Description: The purpose of this class is to demonstrate the uses of the Collection interfaces.
+ */
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
@@ -11,19 +16,19 @@ import static org.junit.jupiter.api.Assertions.*;
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 class CarTest {
 
-    private static Collection<Car> exoticCars = new HashSet<>();
-    private static List<Car> economyCars = new ArrayList<>();
-    private static Set<Car> sportsCars = new HashSet<>();
-    private static Map<String, Car> luxuryCars = new HashMap<>();
+    private static final Collection<Car> exoticCars = new HashSet<>();
+    private static final List<Car> economyCars = new ArrayList<>();
+    private static final Set<Car> sportsCars = new HashSet<>();
+    private static final Map<String, Car> luxuryCars = new HashMap<>();
 
-    private static Car exoticCar1 = new Car.CarBuilder().setId(UUID.randomUUID().toString()).setDesc("McLaren P1").build();
-    private static Car exoticCar2 = new Car.CarBuilder().setId(UUID.randomUUID().toString()).setDesc("Lamborghini Sesto Elemento").build();
-    private static Car economyCar1 = new Car.CarBuilder().setId(UUID.randomUUID().toString()).setDesc("Mini Cooper Countryman").build();
-    private static Car economyCar2 = new Car.CarBuilder().setId(UUID.randomUUID().toString()).setDesc("Volkswagen Polo").build();
-    private static Car sportsCar1 = new Car.CarBuilder().setId(UUID.randomUUID().toString()).setDesc("BMW M4").build();
-    private static Car sportsCar2 = new Car.CarBuilder().setId(UUID.randomUUID().toString()).setDesc("Mercedes Benz C63 AMG").build();
-    private static Car luxuryCar1 = new Car.CarBuilder().setId(UUID.randomUUID().toString()).setDesc("Rolls Royce Phantom").build();
-    private static Car luxuryCar2 = new Car.CarBuilder().setId(UUID.randomUUID().toString()).setDesc("Bentley Continental GT").build();
+    private static final Car exoticCar1 = new Car.CarBuilder().setId(UUID.randomUUID().toString()).setDesc("McLaren P1").build();
+    private static final Car exoticCar2 = new Car.CarBuilder().setId(UUID.randomUUID().toString()).setDesc("Hennessy Venom GT").build();
+    private static final Car economyCar1 = new Car.CarBuilder().setId(UUID.randomUUID().toString()).setDesc("Mini Cooper Countryman").build();
+    private static final Car economyCar2 = new Car.CarBuilder().setId(UUID.randomUUID().toString()).setDesc("Volkswagen Polo").build();
+    private static final Car sportsCar1 = new Car.CarBuilder().setId(UUID.randomUUID().toString()).setDesc("BMW M4").build();
+    private static final Car sportsCar2 = new Car.CarBuilder().setId(UUID.randomUUID().toString()).setDesc("Mercedes Benz C63 AMG").build();
+    private static final Car luxuryCar1 = new Car.CarBuilder().setId(UUID.randomUUID().toString()).setDesc("Rolls Royce Phantom").build();
+    private static final Car luxuryCar2 = new Car.CarBuilder().setId(UUID.randomUUID().toString()).setDesc("Bentley Continental GT").build();
 
     @Test
     @Order(1)
@@ -37,11 +42,14 @@ class CarTest {
     @Test
     @Order(2)
     void findInCollection() {
+        String s = "";
         for(Car car: exoticCars) {
             if (car.equals(exoticCar2)) {
                 assertEquals(car, exoticCar2);
+                s = car.getDesc();
             }
         }
+        System.out.println("The car that was found is the: "+ s);
     }
     @Test
     @Order(3)
@@ -63,11 +71,14 @@ class CarTest {
     @Test
     @Order(5)
     void findInList() {
+        String s = "";
         for (Car car: economyCars) {
-            if (car.equals(economyCar2)){
+            if (car.equals(economyCar2)) {
                 assertEquals(car, economyCar2);
+                s = car.getDesc();
             }
         }
+        System.out.println("The car that was found is the: "+ s);
     }
     @Test
     @Order(6)
@@ -89,11 +100,14 @@ class CarTest {
     @Test
     @Order(8)
     void findInSet() {
+        String s = "";
         for (Car car: sportsCars) {
-            if (car.equals(sportsCar1))
+            if (car.equals(sportsCar1)) {
                 assertEquals(car, sportsCar1);
-            System.out.println(car.getDesc());
+                s = car.getDesc();
+            }
         }
+        System.out.println("The car that was found is the: "+ s);
     }
     @Test
     @Order(9)
@@ -115,11 +129,14 @@ class CarTest {
     @Test
     @Order(11)
     void findInMap() {
+        String s = "";
         for (Car car: luxuryCars.values()) {
-            if (car.equals(luxuryCar1))
+            if (car.equals(luxuryCar1)) {
                 assertEquals(car, luxuryCar1);
-            System.out.println(car.getDesc());
+                s = car.getDesc();
+            }
         }
+        System.out.println("The car that was found is the: "+ s);
     }
     @Test
     @Order(12)
